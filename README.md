@@ -17,3 +17,26 @@ The contents here are for the generations of Oinam family members. However, this
 ## Local Development
 
 Right now, the MarkDown files are converted to HTML with Pandoc.
+
+### Render a single article
+
+```bash
+pandoc devices/computer.md \
+  --standalone \
+  --template=tmpl.html \
+  --css styles.css \
+  --output /tmp/computer.html
+```
+
+- Switch `devices/computer.md` to the file you want to preview.
+- The `--css` flag is optional: point it to a local stylesheet (for example `styles.css`) or a hosted stylesheet (`https://cdn.oinam.com/styles/lore.css`). Omit the flag if you do not need custom styling.
+- The output path can be anywhere outside the repo (e.g. `/tmp`) so generated HTML is not tracked by Git.
+
+- Rebuild all Markdown in one pass with `make build`; HTML lands in `build/<topic>/<file>.html`.
+- Remove generated artifacts with `make clean`.
+
+### Using the shared template
+
+- The root-level `tmpl.html` bundles shared metadata and layout fragments. Pandoc fills in the `$title$`, `$body$`, and other placeholders as it renders.
+- Update `tmpl.html` to adjust the site wrapper (header, footer, structured markup) without touching individual Markdown files.
+- Keep CSS links and scripts in the template minimal; larger styling should live in a dedicated stylesheet referenced via `--css`.

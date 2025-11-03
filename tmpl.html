@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>$pagetitle$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  $if(description)$
+  <meta name="description" content="$description$" />
+  $endif$
+  $if(author)$
+  <meta name="author" content="$author$" />
+  $endif$
+  $if(css)$
+  $for(css)$
+  <link rel="stylesheet" href="$css$" />
+  $endfor$
+  $endif$
+  $if(highlighting-css)$
+  <style>
+  $highlighting-css$
+  </style>
+  $endif$
+</head>
+<body>
+  <header class="site-header">
+    <p><a href="https://lore.oinam.com/">Oinam's Lore</a></p>
+    <h1>$title$</h1>
+    $if(subtitle)$<p class="subtitle">$subtitle$</p>$endif$
+  </header>
+  <main class="content">
+  $body$
+  </main>
+  <footer class="site-footer">
+    <p>Generated from Markdown in the Oinam's Lore repository.</p>
+  </footer>
+  $if(math)$
+  $math$
+  $endif$
+  $for(include-after)$
+  $include-after$
+  $endfor$
+</body>
+</html>
